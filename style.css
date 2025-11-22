@@ -1,0 +1,606 @@
+<style>
+    /* RESET E ESTILOS GERAIS - MOBILE FIRST */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f9fa;
+      overflow-x: hidden;
+    }
+
+    /* HEADER - MOBILE FIRST */
+    header {
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: white;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .logo-image {
+      height: 60px;
+      width: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      filter: brightness(1.1) contrast(1.1);
+    }
+
+    nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      width: 100%;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+      width: 100%;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    nav a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .menu-toggle {
+      display: block;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    #mainNav {
+      display: none;
+    }
+
+    #mainNav.active {
+      display: flex;
+    }
+
+    /* SEÇÕES - MOBILE FIRST */
+    section {
+      padding: 2rem 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: #1e3c72;
+      text-align: center;
+      position: relative;
+    }
+
+    section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: #2a5298;
+      border-radius: 2px;
+    }
+
+    section p {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* SEÇÃO INÍCIO - MOBILE FIRST */
+    #inicio {
+      background: linear-gradient(rgba(30, 60, 114, 0.8), rgba(42, 82, 152, 0.8)), 
+                  url('IMAGEMCARGA.jpg') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 4rem 1rem;
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #inicio h2 {
+      font-size: 1.8rem;
+      color: white;
+      margin-bottom: 1.5rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    #inicio h2::after {
+      background: white;
+    }
+
+    #inicio p {
+      font-size: 1.1rem;
+      color: white;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      max-width: 600px;
+      margin-bottom: 1.5rem;
+    }
+
+    .destaque {
+      font-size: 1.2rem !important;
+      font-weight: 600;
+      color: #a8e6cf !important;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      border-left: 4px solid #25D366;
+    }
+
+    .chamada-redes {
+      font-size: 1rem !important;
+      margin-top: 1rem;
+      color: #e9ecef !important;
+      font-style: italic;
+    }
+
+    /* SEÇÃO SERVIÇOS - MOBILE FIRST */
+    #servicos {
+      background-color: white;
+    }
+
+    #servicos ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    #servicos li {
+      background: #f8f9fa;
+      padding: 1.5rem;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      font-size: 1.1rem;
+      font-weight: 500;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    #servicos li:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    }
+
+    .servico-emoji {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* SEÇÃO DEPOIMENTOS - MOBILE FIRST */
+    #depoimentos {
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    }
+
+    .depoimentos-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .depoimento-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .depoimento-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .depoimento-texto {
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .depoimento-cliente {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .cliente-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #2a5298;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+    }
+
+    .cliente-info h4 {
+      color: #1e3c72;
+      margin-bottom: 0.3rem;
+    }
+
+    .cliente-info p {
+      color: #666;
+      font-size: 0.9rem;
+      text-align: left;
+      margin: 0;
+    }
+
+    .estrelas {
+      color: #FFD700;
+      margin-top: 0.5rem;
+    }
+
+    /* SEÇÃO SOBRE - MOBILE FIRST */
+    #sobre {
+      background-color: white;
+    }
+
+    .sobre-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .sobre-texto {
+      width: 100%;
+    }
+
+    .sobre-imagem {
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .sobre-imagem img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .sobre-imagem:hover img {
+      transform: scale(1.05);
+    }
+
+    /* SEÇÃO MAPA - MOBILE FIRST */
+    #mapa {
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      padding: 2rem 1rem;
+    }
+
+    .mapa-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .mapa-container iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+    }
+
+    /* SEÇÃO CONTATO - MOBILE FIRST */
+    #contato {
+      background-color: white;
+    }
+
+    .contato-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contato-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1rem;
+      font-size: 1.1rem;
+      padding: 1.2rem;
+      background: #f8f9fa;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      border-left: 4px solid #2a5298;
+    }
+
+    .contato-item:hover {
+      background: #e9ecef;
+      transform: translateX(5px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .contato-emoji {
+      font-size: 1.8rem;
+      min-width: 50px;
+      text-align: center;
+    }
+
+    .contato-texto {
+      flex: 1;
+    }
+
+    .contato-destaque {
+      color: #1e3c72;
+      font-weight: 600;
+      display: block;
+      margin-top: 0.3rem;
+    }
+
+    #contato a {
+      color: #25D366;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    #contato a:hover {
+      color: #128C7E;
+      text-decoration: underline;
+    }
+
+    .instagram-link {
+      color: #E1306C !important;
+    }
+
+    .instagram-link:hover {
+      color: #C13584 !important;
+    }
+
+    /* BOTÃO FLUTUANTE DO WHATSAPP */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      z-index: 100;
+      transition: all 0.3s;
+      text-decoration: none;
+      font-size: 1.6rem;
+      color: white;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+      }
+      70% {
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+      }
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      background: #128C7E;
+      animation: none;
+    }
+
+    /* EMOJIS ESPECIAIS */
+    .emoji-whatsapp::before {
+      content: "📱";
+    }
+
+    .emoji-instagram::before {
+      content: "📸";
+    }
+
+    .emoji-email::before {
+      content: "📧";
+    }
+
+    /* FOOTER */
+    footer {
+      background: #1e3c72;
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 2rem;
+    }
+
+    /* MEDIA QUERIES - TABLET */
+    @media (min-width: 768px) {
+      .header-content {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 2rem;
+      }
+      
+      .logo-image {
+        height: 70px;
+        width: 70px;
+      }
+      
+      nav {
+        flex-direction: row;
+        justify-content: center;
+        width: auto;
+        margin-top: 0;
+      }
+      
+      nav a {
+        width: auto;
+        font-size: 1rem;
+      }
+      
+      .menu-toggle {
+        display: none;
+      }
+      
+      #mainNav {
+        display: flex;
+      }
+      
+      section {
+        padding: 3rem 1.5rem;
+      }
+      
+      section h2 {
+        font-size: 2rem;
+      }
+      
+      #inicio {
+        padding: 6rem 1.5rem;
+        min-height: 70vh;
+      }
+      
+      #inicio h2 {
+        font-size: 2.2rem;
+      }
+      
+      #servicos ul {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+      
+      .sobre-content {
+        flex-direction: row;
+        gap: 3rem;
+      }
+      
+      .contato-item {
+        flex-direction: row;
+        text-align: left;
+        padding: 1.5rem;
+      }
+      
+      .depoimentos-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .mapa-container iframe {
+        height: 350px;
+      }
+      
+      .whatsapp-float {
+        width: 70px;
+        height: 70px;
+        font-size: 2rem;
+      }
+    }
+
+    /* MEDIA QUERIES - DESKTOP */
+    @media (min-width: 1024px) {
+      .header-content {
+        padding: 0 2rem;
+      }
+      
+      .logo-image {
+        height: 80px;
+        width: 80px;
+      }
+      
+      section {
+        padding: 4rem 2rem;
+      }
+      
+      section h2 {
+        font-size: 2.2rem;
+      }
+      
+      #inicio {
+        padding: 8rem 2rem;
+        min-height: 80vh;
+      }
+      
+      #inicio h2 {
+        font-size: 2.5rem;
+      }
+      
+      #servicos ul {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      
+      .depoimentos-container {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .mapa-container iframe {
+        height: 400px;
+      }
+    }
+
+    /* RESPONSIVIDADE PARA MOBILE PEQUENO */
+    @media (max-width: 480px) {
+      .logo-image {
+        height: 50px;
+        width: 50px;
+      }
+    }
+  </style>

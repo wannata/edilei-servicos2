@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edilei Serviços - Frete Rápido</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* RESET E ESTILOS GERAIS - MOBILE FIRST */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f9fa;
+      overflow-x: hidden;
+    }
+
+    /* HEADER - MOBILE FIRST */
+    header {
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: white;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .logo-image {
+      height: 60px;
+      width: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      filter: brightness(1.1) contrast(1.1);
+    }
+
+    nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      width: 100%;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+      width: 100%;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    nav a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .menu-toggle {
+      display: block;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    #mainNav {
+      display: none;
+    }
+
+    #mainNav.active {
+      display: flex;
+    }
+
+    /* SEÇÕES - MOBILE FIRST */
+    section {
+      padding: 2rem 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: #1e3c72;
+      text-align: center;
+      position: relative;
+    }
+
+    section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: #2a5298;
+      border-radius: 2px;
+    }
+
+    section p {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* SEÇÃO INÍCIO - MOBILE FIRST */
+    #inicio {
+      background: linear-gradient(rgba(30, 60, 114, 0.8), rgba(42, 82, 152, 0.8)), 
+                  url('IMAGEMCARGA.jpg') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 4rem 1rem;
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #inicio h2 {
+      font-size: 1.8rem;
+      color: white;
+      margin-bottom: 1.5rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    #inicio h2::after {
+      background: white;
+    }
+
+    #inicio p {
+      font-size: 1.1rem;
+      color: white;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      max-width: 600px;
+      margin-bottom: 1.5rem;
+    }
+
+    .destaque {
+      font-size: 1.2rem !important;
+      font-weight: 600;
+      color: #a8e6cf !important;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      border-left: 4px solid #25D366;
+    }
+
+    .chamada-redes {
+      font-size: 1rem !important;
+      margin-top: 1rem;
+      color: #e9ecef !important;
+      font-style: italic;
+    }
+
+    /* SEÇÃO SERVIÇOS - MOBILE FIRST */
+    #servicos {
+      background-color: white;
+    }
+
+    #servicos ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    #servicos li {
+      background: #f8f9fa;
+      padding: 1.5rem;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      font-size: 1.1rem;
+      font-weight: 500;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    #servicos li:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    }
+
+    .servico-emoji {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* SEÇÃO DEPOIMENTOS - MOBILE FIRST */
+    #depoimentos {
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    }
+
+    .depoimentos-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .depoimento-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .depoimento-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .depoimento-texto {
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .depoimento-cliente {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .cliente-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #2a5298;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+    }
+
+    .cliente-info h4 {
+      color: #1e3c72;
+      margin-bottom: 0.3rem;
+    }
+
+    .cliente-info p {
+      color: #666;
+      font-size: 0.9rem;
+      text-align: left;
+      margin: 0;
+    }
+
+    .estrelas {
+      color: #FFD700;
+      margin-top: 0.5rem;
+    }
+
+    /* SEÇÃO SOBRE - MOBILE FIRST */
+    #sobre {
+      background-color: white;
+    }
+
+    .sobre-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .sobre-logo {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .sobre-logo-img {
+      height: 100px;
+      width: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #2a5298;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .missao-visao-valores {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .mvv-item {
+      background: #f8f9fa;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-left: 4px solid #2a5298;
+    }
+
+    .mvv-item h3 {
+      color: #1e3c72;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .mvv-item h3 i {
+      color: #25D366;
+    }
+
+    .entrega-rapida {
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: white;
+      padding: 2rem;
+      border-radius: 15px;
+      text-align: center;
+      margin: 2rem 0;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .entrega-rapida h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #a8e6cf;
+    }
+
+    .entrega-rapida p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      color: white;
+    }
+
+    .itens-entrega {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .item-entrega {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1rem;
+      border-radius: 8px;
+      border-left: 4px solid #25D366;
+    }
+
+    .item-entrega strong {
+      color: #a8e6cf;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .sobre-imagem {
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .sobre-imagem img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .sobre-imagem:hover img {
+      transform: scale(1.05);
+    }
+
+    /* SEÇÃO MAPA - MOBILE FIRST */
+    #mapa {
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      padding: 2rem 1rem;
+    }
+
+    .mapa-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .mapa-container iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+    }
+
+    /* SEÇÃO CONTATO - MOBILE FIRST */
+    #contato {
+      background-color: white;
+    }
+
+    .contato-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contato-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1rem;
+      font-size: 1.1rem;
+      padding: 1.2rem;
+      background: #f8f9fa;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      border-left: 4px solid #2a5298;
+    }
+
+    .contato-item:hover {
+      background: #e9ecef;
+      transform: translateX(5px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .contato-emoji {
+      font-size: 1.8rem;
+      min-width: 50px;
+      text-align: center;
+    }
+
+    .contato-texto {
+      flex: 1;
+    }
+
+    .contato-destaque {
+      color: #1e3c72;
+      font-weight: 600;
+      display: block;
+      margin-top: 0.3rem;
+    }
+
+    #contato a {
+      color: #25D366;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    #contato a:hover {
+      color: #128C7E;
+      text-decoration: underline;
+    }
+
+    .instagram-link {
+      color: #E1306C !important;
+    }
+
+    .instagram-link:hover {
+      color: #C13584 !important;
+    }
+
+    /* BOTÃO FLUTUANTE DO WHATSAPP */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      z-index: 100;
+      transition: all 0.3s;
+      text-decoration: none;
+      font-size: 1.6rem;
+      color: white;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+      }
+      70% {
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+      }
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      background: #128C7E;
+      animation: none;
+    }
+
+    /* EMOJIS ESPECIAIS */
+    .emoji-whatsapp::before {
+      content: "📱";
+    }
+
+    .emoji-instagram::before {
+      content: "📸";
+    }
+
+    .emoji-email::before {
+      content: "📧";
+    }
+
+    /* FOOTER */
+    footer {
+      background: #1e3c72;
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 2rem;
+    }
+
+    /* MEDIA QUERIES - TABLET */
+    @media (min-width: 768px) {
+      .header-content {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 2rem;
+      }
+      
+      .logo-image {
+        height: 70px;
+        width: 70px;
+      }
+      
+      nav {
+        flex-direction: row;
+        justify-content: center;
+        width: auto;
+        margin-top: 0;
+      }
+      
+      nav a {
+        width: auto;
+        font-size: 1rem;
+      }
+      
+      .menu-toggle {
+        display: none;
+      }
+      
+      #mainNav {
+        display: flex;
+      }
+      
+      section {
+        padding: 3rem 1.5rem;
+      }
+      
+      section h2 {
+        font-size: 2rem;
+      }
+      
+      #inicio {
+        padding: 6rem 1.5rem;
+        min-height: 70vh;
+      }
+      
+      #inicio h2 {
+        font-size: 2.2rem;
+      }
+      
+      #servicos ul {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+      
+      .sobre-content {
+        flex-direction: row;
+        gap: 3rem;
+      }
+      
+      .missao-visao-valores {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .itens-entrega {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .contato-item {
+        flex-direction: row;
+        text-align: left;
+        padding: 1.5rem;
+      }
+      
+      .depoimentos-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .mapa-container iframe {
+        height: 350px;
+      }
+      
+      .whatsapp-float {
+        width: 70px;
+        height: 70px;
+        font-size: 2rem;
+      }
+    }
+
+    /* MEDIA QUERIES - DESKTOP */
+    @media (min-width: 1024px) {
+      .header-content {
+        padding: 0 2rem;
+      }
+      
+      .logo-image {
+        height: 80px;
+        width: 80px;
+      }
+      
+      .sobre-logo-img {
+        height: 120px;
+        width: 120px;
+      }
+      
+      section {
+        padding: 4rem 2rem;
+      }
+      
+      section h2 {
+        font-size: 2.2rem;
+      }
+      
+      #inicio {
+        padding: 8rem 2rem;
+        min-height: 80vh;
+      }
+      
+      #inicio h2 {
+        font-size: 2.5rem;
+      }
+      
+      #servicos ul {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      
+      .depoimentos-container {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .mapa-container iframe {
+        height: 400px;
+      }
+      
+      .itens-entrega {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    /* RESPONSIVIDADE PARA MOBILE PEQUENO */
+    @media (max-width: 480px) {
+      .logo-image {
+        height: 50px;
+        width: 50px;
+      }
+      
+      .sobre-logo-img {
+        height: 80px;
+        width: 80px;
+      }
+      
+      /* RESPONSIVIDADE DO CHAT PARA MOBILE */
+      .chat-widget {
+        width: 90%;
+        right: 5%;
+        left: 5%;
+        bottom: 80px;
+      }
+      
+      .chat-float-btn {
+        width: 55px;
+        height: 55px;
+        font-size: 24px;
+      }
+      
+      /* Ajustes adicionais para o chat em mobile */
+      .chat-body {
+        height: 150px !important;
+      }
+      
+      .chat-message {
+        font-size: 0.9rem;
+      }
+      
+      input, textarea, button {
+        font-size: 16px !important; /* Previne zoom no iOS */
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div class="logo">
+        <!-- AQUI ESTÁ A ALTERAÇÃO: LOGOGLOBO.jpg no cabeçalho -->
+        <img src="LOGOGLOBO.jpg" alt="Edilei Serviços" class="logo-image">
+      </div>
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav id="mainNav">
+        <a href="#inicio">Início</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#sobre">Sobre Nós</a>
+        <a href="#mapa">Localização</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <section id="inicio">
+    <h2>Transporte com Segurança e Agilidade</h2>
+    <p>Atendemos mudanças, encomendas e fretes rápidos em Ribeirão das Neves e região.</p>
+    <p class="destaque">Também fazemos fretes para outros estados!</p>
+    <p class="chamada-redes">Para saber mais entre em contato e siga nossas redes sociais.</p>
+  </section>
+
+  <section id="servicos">
+    <h2>Nossos Serviços</h2>
+    <ul>
+      <li>
+        <span class="servico-emoji">📦</span>
+        <span>Frete urbano</span>
+      </li>
+      <li>
+        <span class="servico-emoji">🚚</span>
+        <span>Frete interestadual</span>
+      </li>
+      <li>
+        <span class="servico-emoji">🏠</span>
+        <span>Mudanças residenciais</span>
+      </li>
+      <li>
+        <span class="servico-emoji">📍</span>
+        <span>Coletas e entregas programadas</span>
+      </li>
+    </ul>
+  </section>
+
+  <section id="depoimentos">
+    <h2>O que nossos clientes dizem</h2>
+    <div class="depoimentos-container">
+      <div class="depoimento-card">
+        <div class="depoimento-texto">
+          "Contratei para uma mudança residencial e fiquei impressionado com a eficiência. Tudo foi feito com cuidado e dentro do prazo combinado!"
+        </div>
+        <div class="depoimento-cliente">
+          <div class="cliente-avatar">MC</div>
+          <div class="cliente-info">
+            <h4>Maria Clara</h4>
+            <p>Mudança Residencial</p>
+            <div class="estrelas">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="depoimento-card">
+        <div class="depoimento-texto">
+          "Precisava enviar mercadorias para outro estado e o Edilei Serviços foi impecável. Preço justo e entrega rápida. Recomendo!"
+        </div>
+        <div class="depoimento-cliente">
+          <div class="cliente-avatar">JS</div>
+          <div class="cliente-info">
+            <h4>João Silva</h4>
+            <p>Frete Interestadual</p>
+            <div class="estrelas">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="depoimento-card">
+        <div class="depoimento-texto">
+          "Serviço de coleta e entrega super pontual. Uso regularmente para meu comércio e nunca tive problemas. Profissionais muito atenciosos."
+        </div>
+        <div class="depoimento-cliente">
+          <div class="cliente-avatar">AS</div>
+          <div class="cliente-info">
+            <h4>Ana Souza</h4>
+            <p>Coleta Programada</p>
+            <div class="estrelas">★★★★★</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre">
+    <h2>Sobre Nós</h2>
+    <div class="sobre-content">
+      <div class="sobre-texto">
+        <h3 style="text-align: center; color: #1e3c72; margin-bottom: 1.5rem; font-size: 1.4rem; font-weight: 600;">
+          Edilei Serviços: Uma Abordagem Dedicada ao Transporte de Cargas.
+        </h3>
+        
+        <p>Iniciamos nossa trajetória com um propósito simples: oferecer um serviço de transporte que priorize a qualidade, a confiança e um relacionamento próximo com o cliente.</p>
+        
+        <p>Diferente das grandes operadoras, nós, Edilei e nossa equipe, gerenciamos e acompanhamos pessoalmente cada projeto. Isso nos permite não apenas cumprir prazos com rigor, mas também oferecer uma experiência única e totalmente adaptada às suas necessidades.</p>
+        
+        <p>Ao escolher a Edilei Serviços, você seleciona um serviço onde a dedicação é absoluta, a comunicação é direta e o cuidado com os seus bens é a nossa maior prioridade. Trabalhamos não como fornecedores, mas como parceiros logísticos para o seu sucesso.</p>
+        
+        <p style="margin-top: 1rem; font-weight: 600; color: #1e3c72;">Atendemos especialmente Ribeirão das Neves e região metropolitana!</p>
+      </div>
+      <div class="sobre-imagem">
+        <!-- AQUI MANTIVEMOS A IMAGEM ORIGINAL: LOGOSITE.JPG na seção Sobre -->
+        <img src="LOGOSITE.JPG" alt="Centro de distribuição - Edilei Serviços">
+      </div>
+    </div>
+
+    <!-- Missão, Visão e Valores -->
+    <div class="missao-visao-valores">
+      <div class="mvv-item">
+        <h3><i class="fas fa-bullseye"></i> Missão</h3>
+        <p>Oferecer serviços de transporte e frete com excelência, garantindo segurança, agilidade e satisfação total dos nossos clientes através de soluções logísticas eficientes e confiáveis.</p>
+      </div>
+      
+      <div class="mvv-item">
+        <h3><i class="fas fa-eye"></i> Visão</h3>
+        <p>Ser referência em serviços de transporte na região, reconhecida pela qualidade, pontualidade e compromisso com a satisfação do cliente, expandindo nossa atuação com tecnologia e inovação.</p>
+      </div>
+      
+      <div class="mvv-item">
+        <h3><i class="fas fa-heart"></i> Valores</h3>
+        <p>
+          • Compromisso com a qualidade<br>
+          • Pontualidade e responsabilidade<br>
+          • Segurança em primeiro lugar<br>
+          • Transparência e honestidade<br>
+          • Respeito ao cliente<br>
+          • Inovação constante
+        </p>
+      </div>
+    </div>
+
+    <!-- Entrega Rápida e Segura -->
+    <div class="entrega-rapida">
+      <h3># Entrega Rápida e Segura</h3>
+      <p>Consulte disponibilidade e garanta o melhor serviço de transporte para suas necessidades</p>
+      
+      <div class="itens-entrega">
+        <div class="item-entrega">
+          <strong>Atendimento</strong>
+          <span>(31) 9 90822176</span>
+        </div>
+        
+        <div class="item-entrega">
+          <strong>Site</strong>
+          <span>100% seguro</span>
+        </div>
+        
+        <div class="item-entrega">
+          <strong>Entregas</strong>
+          <span>Rápidas e seguras</span>
+        </div>
+        
+        <div class="item-entrega">
+          <strong>Consultoria</strong>
+          <span>Disponibilidade favor contactar</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="mapa">
+    <h2>Nossa Localização</h2>
+    <div class="mapa-container">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119998.22460547686!2d-44.14480929999999!3d-19.7663135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa6c371b36c3e1d%3A0x3d9d6c5b1b6a0b1e!2sRibeir%C3%A3o%20das%20Neves%2C%20MG!5e0!3m2!1spt-BR!2sbr!4v1711234567890!5m2!1spt-BR!2sbr" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </section>
+
+  <section id="contato">
+    <h2>Entre em Contato</h2>
+    
+    <!-- Áudio para notificação -->
+    <audio id="notif-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-software-interface-start-2574.mp3" preload="auto"></audio>
+    
+    <!-- Sistema de Chat -->
+    <div style="max-width: 600px; margin: 0 auto 2rem auto; background: white; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); overflow: hidden;">
+        <div class="chat-header" style="background: linear-gradient(135deg, #1e3c72, #2a5298); color: white; padding: 1rem; text-align: center;">
+            <h3 style="margin: 0; font-size: 1.2rem;">💬 Chat de Atendimento</h3>
+            <p style="margin: 5px 0 0 0; font-size: 0.9rem; opacity: 0.9;">Respondemos em 1 minuto</p>
+        </div>
+        
+        <div class="chat-body" style="padding: 1rem; height: 200px; overflow-y: auto; background: #f8f9fa;">
+            <div class="chat-message bot" style="background: white; padding: 10px; border-radius: 10px; margin-bottom: 10px; max-width: 80%; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                Olá! Escolha uma opção abaixo para começarmos:
+            </div>
+        </div>
+        
+        <div class="chat-options" style="padding: 1rem; background: white; border-top: 1px solid #eee;">
+            <button onclick="selectOption('Orçamento')" style="background: #25D366; color: white; border: none; padding: 12px; border-radius: 8px; width: 100%; margin: 5px 0; cursor: pointer; font-weight: 500;">
+                💰 Solicitar Orçamento
+            </button>
+            <button onclick="selectOption('Dúvida')" style="background: #2a5298; color: white; border: none; padding: 12px; border-radius: 8px; width: 100%; margin: 5px 0; cursor: pointer; font-weight: 500;">
+                ❓ Tirar Dúvidas
+            </button>
+            <button onclick="selectOption('Outro')" style="background: #666; color: white; border: none; padding: 12px; border-radius: 8px; width: 100%; margin: 5px 0; cursor: pointer; font-weight: 500;">
+                💬 Outro Assunto
+            </button>
+        </div>
+        
+        <div class="chat-form" style="display:none; padding: 1rem; background: white; border-top: 1px solid #eee;">
+            <input type="text" id="chat-name" placeholder="Seu nome" style="width:100%; padding:12px; margin:5px 0; border:1px solid #ddd; border-radius:8px; font-size: 1rem;">
+            <textarea id="chat-msg" placeholder="Sua mensagem" style="width:100%; height:80px; padding:12px; margin:5px 0; border:1px solid #ddd; border-radius:8px; resize:none; font-size: 1rem;"></textarea>
+            <button onclick="sendToWhatsApp()" style="background:#25D366; color:white; border:none; padding:12px; border-radius:8px; width:100%; cursor:pointer; font-size: 1rem; font-weight: 500;">
+                📱 Enviar no WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <div class="contato-info">
+        <div class="contato-item">
+            <span class="contato-emoji emoji-whatsapp"></span>
+            <div class="contato-texto">
+                <strong>WhatsApp:</strong>
+                <a href="https://wa.me/553190822176" target="_blank" class="contato-destaque">
+                    Clique aqui para solicitar um frete em Ribeirão das Neves
+                </a>
+                <span class="contato-destaque">+55 31 9082-2176</span>
+            </div>
+        </div>
+        
+        <div class="contato-item">
+            <span class="contato-emoji emoji-email"></span>
+            <div class="contato-texto">
+                <strong>Email:</strong>
+                <span class="contato-destaque">edileiservicos@gmail.com</span>
+            </div>
+        </div>
+        
+        <div class="contato-item">
+            <span class="contato-emoji emoji-instagram"></span>
+            <div class="contato-texto">
+                <strong>Instagram:</strong>
+                <a href="https://instagram.com/edileiservicos" target="_blank" class="contato-destaque instagram-link">
+                    @edileiservicos
+                </a>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <a href="https://wa.me/553190822176" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <footer>
+    <p>© 2024 Edilei Serviços - Todos os direitos reservados.</p>
+    <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.9;">CNPJ: 54.079.788/0001-00</p>
+  </footer>
+
+  <script>
+    // Adicionar scroll suave para os links de navegação
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 100,
+            behavior: 'smooth'
+          });
+          
+          // Fechar menu mobile após clicar em um link
+          if (window.innerWidth < 768) {
+            document.getElementById('mainNav').classList.remove('active');
+          }
+        }
+      });
+    });
+    
+    // Adicionar ano atual no footer
+    document.querySelector('footer p').innerHTML = `© ${new Date().getFullYear()} Edilei Serviços - Todos os direitos reservados.`;
+    
+    // Menu mobile toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const mainNav = document.getElementById('mainNav');
+    
+    if (menuToggle) {
+      menuToggle.addEventListener('click', function() {
+        mainNav.classList.toggle('active');
+      });
+    }
+    
+    // Fechar menu ao clicar fora dele
+    document.addEventListener('click', function(event) {
+      if (window.innerWidth < 768 && 
+          !event.target.closest('nav') && 
+          !event.target.closest('.menu-toggle') && 
+          mainNav.classList.contains('active')) {
+        mainNav.classList.remove('active');
+      }
+    });
+
+    // Função para tocar som de notificação
+    function playSound() {
+        document.getElementById('notif-sound').play();
+    }
+
+    function selectOption(option) {
+        const chatBody = document.querySelector('.chat-body');
+        
+        // Adiciona mensagem do usuário
+        const userMsg = document.createElement('div');
+        userMsg.className = 'chat-message';
+        userMsg.style.background = '#e3f2fd';
+        userMsg.style.marginLeft = 'auto';
+        userMsg.style.maxWidth = '80%';
+        userMsg.style.padding = '10px';
+        userMsg.style.borderRadius = '10px';
+        userMsg.style.marginBottom = '10px';
+        userMsg.textContent = option === 'Orçamento' ? '💰 Solicitar Orçamento' : 
+                             option === 'Dúvida' ? '❓ Tirar Dúvidas' : '💬 Outro Assunto';
+        chatBody.appendChild(userMsg);
+        
+        // Mostra o formulário
+        document.querySelector('.chat-options').style.display = 'none';
+        document.querySelector('.chat-form').style.display = 'block';
+        
+        // Resposta do bot com som após 1 segundo
+        setTimeout(() => {
+            const botMsg = document.createElement('div');
+            botMsg.className = 'chat-message bot';
+            botMsg.style.background = 'white';
+            botMsg.style.padding = '10px';
+            botMsg.style.borderRadius = '10px';
+            botMsg.style.marginBottom = '10px';
+            botMsg.style.maxWidth = '80%';
+            botMsg.style.boxShadow = '0 2px 5px rgba(0,0,0,0.1)';
+            botMsg.innerHTML = 'Perfeito! Preencha abaixo e te respondo em 1 min.';
+            chatBody.appendChild(botMsg);
+            
+            // Toca o som de notificação
+            playSound();
+            
+            // Scroll para baixo
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }, 1000);
+    }
+
+    function sendToWhatsApp() {
+        const nome = document.getElementById('chat-name').value || 'Anônimo';
+        const msg = document.getElementById('chat-msg').value || 'Quero falar sobre fretes';
+        const texto = `Olá! Sou *${nome}*.\n\n${msg}`;
+        const url = `https://wa.me/553190822176?text=${encodeURIComponent(texto)}`;
+        window.open(url, '_blank');
+        
+        const chatBody = document.querySelector('.chat-body');
+        const sent = document.createElement('div');
+        sent.className = 'chat-message';
+        sent.style.background = '#e8f5e8';
+        sent.style.marginLeft = 'auto';
+        sent.style.maxWidth = '80%';
+        sent.style.padding = '10px';
+        sent.style.borderRadius = '10px';
+        sent.style.marginBottom = '10px';
+        sent.style.color = '#2e7d32';
+        sent.textContent = '✅ Mensagem enviada! Redirecionando para o WhatsApp...';
+        chatBody.appendChild(sent);
+        
+        // Scroll para baixo
+        chatBody.scrollTop = chatBody.scrollHeight;
+        
+        // Limpa o formulário
+        document.getElementById('chat-name').value = '';
+        document.getElementById('chat-msg').value = '';
+        
+        // Som de confirmação
+        playSound();
+    }
+  </script>
+</body>
+</html>
